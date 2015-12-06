@@ -1,0 +1,45 @@
+{
+    "name": "indigophp/cookie-consent-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony Bundle for the popular Cookie Consent plugin",
+    "license": "MIT",
+    "keywords": ["cookie", "cookie"],
+    "homepage": "https://indigophp.com",
+    "authors": [
+        {
+            "name": "Márk Sági-Kazár",
+            "email": "mark.sagikazar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "symfony/framework-bundle": "^2.7|^3.0"
+    },
+    "require-dev": {
+        "symfony/symfony": "^2.7|^3.0",
+        "phpunit/phpunit": "^4.4",
+        "matthiasnoback/symfony-config-test": "^1.4",
+        "matthiasnoback/symfony-dependency-injection-test": "^0.7.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Indigo\\Bundle\\CookieConsentBundle\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Indigo\\Bundle\\CookieConsentBundle\\": "Tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-ci": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,9 @@
+{% if options is not empty %}
+    <script>
+        window.cookieconsent_options = {{ options|json_encode|raw }};
+    </script>
+{% endif %}
+
+{% if script.enabled == true %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/{{ script.version }}/cookieconsent.min.js"></script>
+{% endif %}

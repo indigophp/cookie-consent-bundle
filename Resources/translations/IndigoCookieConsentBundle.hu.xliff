@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="hu" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="message">
+                <source>message</source>
+                <target>Az optimális működés érdekében az oldal sütiket (cookie) használ.</target>
+            </trans-unit>
+            <trans-unit id="dismiss">
+                <source>dismiss</source>
+                <target>Elfogadom!</target>
+            </trans-unit>
+            <trans-unit id="learn_more">
+                <source>learn_more</source>
+                <target>További információk</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
