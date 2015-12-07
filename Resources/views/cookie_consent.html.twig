@@ -4,6 +4,6 @@
     </script>
 {% endif %}
 
-{% if script.enabled == true %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/{{ script.version }}/cookieconsent.min.js"></script>
+{% if script != false %}
+    <script src="{{ script }}"></script>
 {% endif %}

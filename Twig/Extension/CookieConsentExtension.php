@@ -15,20 +15,12 @@ class CookieConsentExtension extends \Twig_Extension
     private $translator;
 
     /**
-     * @var array
-     */
-    private $options;
-
-    /**
      * Default render related configuration.
      *
      * @var array
      */
     private $defaultConfig = [
-        'script' => [
-            'enabled' => true,
-            'version' => '1.0.10',
-        ],
+        'script' => '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js',
     ];
 
     /**
@@ -45,10 +37,9 @@ class CookieConsentExtension extends \Twig_Extension
     /**
      * @param TranslatorInterface $translator
      */
-    public function __construct(TranslatorInterface $translator, array $options)
+    public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
-        $this->options = $options;
     }
 
     /**
@@ -83,22 +74,16 @@ class CookieConsentExtension extends \Twig_Extension
      * Render cookie consent.
      *
      * @param \Twig_Environment $twigEnvironment
+     * @param array             $options
      * @param array             $config
      *
      * @return string
      */
-    public function renderCookieConsent(\Twig_Environment $twigEnvironment, array $config = [])
+    public function renderCookieConsent(\Twig_Environment $twigEnvironment, array $options = [], array $config = [])
     {
-        $config = array_merge(['options' => []], $config);
-
-        $config['options'] = array_merge(
-            $this->options,
-            $config['options']
-        );
-
-        $config['options'] = $this->translateMissingLabelOptions($config['options']);
-
         $config = array_merge($this->defaultConfig, $config);
+
+        $config['options'] = $this->translateMissingLabelOptions($options);
 
         return $twigEnvironment->render(
             'IndigoCookieConsentBundle::cookie_consent.html.twig',
