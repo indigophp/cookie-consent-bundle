@@ -17,16 +17,6 @@ class IndigoCookieConsentExtensionTest extends AbstractExtensionTestCase
     /**
      * @test
      */
-    public function it_has_options_as_parameters()
-    {
-        $this->load();
-
-        $this->assertContainerBuilderHasParameter('indigo_cookie_consent.options');
-    }
-
-    /**
-     * @test
-     */
     public function it_has_a_twig_extension()
     {
         $this->load();

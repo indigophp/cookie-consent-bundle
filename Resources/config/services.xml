@@ -8,7 +8,6 @@
         <service id="twig.extension.indigo_cookie_consent" class="Indigo\Bundle\CookieConsentBundle\Twig\Extension\CookieConsentExtension">
             <tag name="twig.extension" />
             <argument type="service" id="translator" />
-            <argument>%indigo_cookie_consent.options%</argument>
         </service>
     </services>
 </container>
