@@ -15,23 +15,21 @@ class CookieConsentExtension extends \Twig_Extension
     private $translator;
 
     /**
-     * Default render related configuration.
+     * Configuration values and options passed to the template.
      *
      * @var array
      */
-    private $defaultConfig = [
-        'script' => '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js',
-    ];
+    private $config = [];
 
     /**
      * List of label options and trans keys.
      *
      * @var array
      */
-    private $labelTransKeys = [
-        'message'   => 'message',
-        'dismiss'   => 'dismiss',
-        'learnMore' => 'learn_more',
+    private $labels = [
+        'message',
+        'dismiss',
+        'learnMore',
     ];
 
     /**
@@ -71,19 +69,35 @@ class CookieConsentExtension extends \Twig_Extension
     }
 
     /**
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * @param array $config
+     */
+    public function setConfig(array $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
      * Render cookie consent.
      *
      * @param \Twig_Environment $twigEnvironment
-     * @param array             $options
-     * @param array             $config
      *
      * @return string
      */
-    public function renderCookieConsent(\Twig_Environment $twigEnvironment, array $options = [], array $config = [])
+    public function renderCookieConsent(\Twig_Environment $twigEnvironment)
     {
-        $config = array_merge($this->defaultConfig, $config);
+        $config = $this->config;
 
-        $config['options'] = $this->translateMissingLabelOptions($options);
+        if($config['translation']) {
+            $config['options'] = $this->translateLabels($config['options']);
+        }
 
         return $twigEnvironment->render(
             'IndigoCookieConsentBundle::cookie_consent.html.twig',
@@ -98,12 +112,10 @@ class CookieConsentExtension extends \Twig_Extension
      *
      * @return array
      */
-    private function translateMissingLabelOptions(array $options)
+    private function translateLabels(array $options)
     {
-        foreach ($this->labelTransKeys as $label => $transKey) {
-            if (empty($options[$label])) {
-                $options[$label] = $this->translator->trans($transKey, [], 'IndigoCookieConsentBundle');
-            }
+        foreach ($this->labels as $label) {
+            $options[$label] = $this->translator->trans($options[$label], [], 'IndigoCookieConsentBundle');
         }
 
         return $options;
