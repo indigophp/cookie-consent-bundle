@@ -18,10 +18,41 @@ Via Composer
 $ composer require indigophp/cookie-consent-bundle
 ```
 
+Enable the bundle in your kernel:
+
+``` php
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Indigo\CookieConsentBundle\IndigoCookieConsentBundle(),
+    );
+}
+```
+
 
 ## Usage
 
 Add [Cookie Consent](https://silktide.com/tools/cookie-consent/) to your website.
+
+Use the `cookie_consent_render` method in your Twig template:
+
+`{{ cookie_consent_render({'link': 'http://example.com/privacy', 'theme': 'dark-bottom'}, {'script': false}) }}`
+
+The first parameter is an array of options as defined in the Cookie Consent
+[documentation](https://silktide.com/tools/cookie-consent/docs/installation/).
+
+If you don't pass label options (currently: `message`, `dismiss`, `learnMore`), they are automatically translated
+to your language (if available, PRs welcome) based on the original values (see the documentation).
+
+If you pass them, no translation is done.
+
+The second parameter is a config array, currently accepting one config: `script`.
+Set it to `false` if you have the plugin compiled into your script.
+Set it to any string value to include that as a script (defaults to the one defined in the documentation).
 
 
 ## Testing
