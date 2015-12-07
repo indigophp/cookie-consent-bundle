@@ -38,21 +38,20 @@ public function registerBundles()
 
 Add [Cookie Consent](https://silktide.com/tools/cookie-consent/) to your website.
 
-Configure
-
-Use the `cookie_consent_render` method in your Twig template:
+Configure the bundle:
 
 ``` yaml
 indigo_cookie_consent:
     options:
-        # any options you would pass to the plugins
+        # any options you would pass to the plugins (except labels: message, dismiss, learnMore)
         # see https://silktide.com/tools/cookie-consent/docs/installation
-    translation: true # You can turn translations off
-    script: false # You can turn script off
+    script: false # You can turn script off or pass a script location (eg. to use a specific version)
 ```
 
+**Note:** labels are automatically translated. Translations are in `IndigoCookieConsentBundle` domain (PRs welcome).
 
-Then in your Twig template:
+
+Use the `cookie_consent_render` method in your Twig template:
 `{{ cookie_consent_render() }}`
 
 

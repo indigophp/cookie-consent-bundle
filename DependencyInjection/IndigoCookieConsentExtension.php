@@ -2,10 +2,10 @@
 
 namespace Indigo\Bundle\CookieConsentBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
@@ -20,15 +20,12 @@ class IndigoCookieConsentExtension extends Extension
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
 
-        $twigExtension = new Definition('Indigo\Bundle\CookieConsentBundle\Twig\Extension\CookieConsentExtension');
+        $container->setParameter('indigo_cookie_consent', $config);
 
-        $twigExtension
-            ->addArgument(new Reference('translator'))
-            ->addMethodCall('setConfig', [$config])
-        ;
-
-        $twigExtension->addTag('twig.extension');
-
-        $container->setDefinition('twig.extension.indigo_cookie_consent', $twigExtension);
+        $loader = new XmlFileLoader(
+            $container,
+            new FileLocator(__DIR__.'/../Resources/config')
+        );
+        $loader->load('services.xml');
     }
 }

@@ -27,9 +27,9 @@ class CookieConsentExtension extends \Twig_Extension
      * @var array
      */
     private $labels = [
-        'message',
-        'dismiss',
-        'learnMore',
+        'message'   => 'message',
+        'dismiss'   => 'dismiss',
+        'learnMore' => 'learn_more',
     ];
 
     /**
@@ -69,14 +69,6 @@ class CookieConsentExtension extends \Twig_Extension
     }
 
     /**
-     * @param array $options
-     */
-    public function setOptions(array $options)
-    {
-        $this->options = $options;
-    }
-
-    /**
      * @param array $config
      */
     public function setConfig(array $config)
@@ -95,9 +87,7 @@ class CookieConsentExtension extends \Twig_Extension
     {
         $config = $this->config;
 
-        if($config['translation']) {
-            $config['options'] = $this->translateLabels($config['options']);
-        }
+        $config['options'] = $this->appendLabelTranslations($config['options']);
 
         return $twigEnvironment->render(
             'IndigoCookieConsentBundle::cookie_consent.html.twig',
@@ -106,16 +96,16 @@ class CookieConsentExtension extends \Twig_Extension
     }
 
     /**
-     * Translate undefined label options.
+     * Translate label options.
      *
      * @param array $options
      *
      * @return array
      */
-    private function translateLabels(array $options)
+    private function appendLabelTranslations(array $options)
     {
-        foreach ($this->labels as $label) {
-            $options[$label] = $this->translator->trans($options[$label], [], 'IndigoCookieConsentBundle');
+        foreach ($this->labels as $label => $transKey) {
+            $options[$label] = $this->translator->trans($transKey, [], 'IndigoCookieConsentBundle');
         }
 
         return $options;

@@ -18,6 +18,16 @@ class IndigoCookieConsentExtensionTest extends AbstractExtensionTestCase
     /**
      * @test
      */
+    public function it_has_a_parameter()
+    {
+        $this->load();
+
+        $this->assertContainerBuilderHasParameter('indigo_cookie_consent');
+    }
+
+    /**
+     * @test
+     */
     public function it_has_a_twig_extension()
     {
         $this->load();
@@ -41,17 +51,7 @@ class IndigoCookieConsentExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
             'twig.extension.indigo_cookie_consent',
             'setConfig',
-            [
-                [
-                    'options' => [
-                        'message'   => 'message',
-                        'dismiss'   => 'dismiss',
-                        'learnMore' => 'learn_more',
-                    ],
-                    'translation' => true,
-                    'script' => '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js',
-                ]
-            ]
+            ['%indigo_cookie_consent%']
         );
     }
 }
