@@ -73,12 +73,9 @@ If you discover any security related issues,
 please contact us at [security@indigophp.com](mailto:security@indigophp.com).
 
 
-## Security
-
-If you discover any security related issues, please contact us at [security@indigophp.com](mailto:security@indigophp.com).
-
-
 ## Credits
+
+Many thanks to [@dbu](https://github.com/dbu) for helping me with my First Symfony Bundle (tm).
 
 - [Márk Sági-Kazár](https://github.com/sagikazarmark)
 - [All Contributors](https://github.com/indigophp/cookie-consent-bundle/contributors)
