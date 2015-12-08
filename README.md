@@ -38,21 +38,21 @@ public function registerBundles()
 
 Add [Cookie Consent](https://silktide.com/tools/cookie-consent/) to your website.
 
+Configure the bundle:
+
+``` yaml
+indigo_cookie_consent:
+    options:
+        # any options you would pass to the plugins (except labels: message, dismiss, learnMore)
+        # see https://silktide.com/tools/cookie-consent/docs/installation
+    script: false # You can turn script off or pass a script location (eg. to use a specific version)
+```
+
+**Note:** labels are automatically translated. Translations are in `IndigoCookieConsentBundle` domain (PRs welcome).
+
+
 Use the `cookie_consent_render` method in your Twig template:
-
-`{{ cookie_consent_render({'link': 'http://example.com/privacy', 'theme': 'dark-bottom'}, {'script': false}) }}`
-
-The first parameter is an array of options as defined in the Cookie Consent
-[documentation](https://silktide.com/tools/cookie-consent/docs/installation/).
-
-If you don't pass label options (currently: `message`, `dismiss`, `learnMore`), they are automatically translated
-to your language (if available, PRs welcome) based on the original values (see the documentation).
-
-If you pass them, no translation is done.
-
-The second parameter is a config array, currently accepting one config: `script`.
-Set it to `false` if you have the plugin compiled into your script.
-Set it to any string value to include that as a script (defaults to the one defined in the documentation).
+`{{ cookie_consent_render() }}`
 
 
 ## Testing
@@ -73,12 +73,9 @@ If you discover any security related issues,
 please contact us at [security@indigophp.com](mailto:security@indigophp.com).
 
 
-## Security
-
-If you discover any security related issues, please contact us at [security@indigophp.com](mailto:security@indigophp.com).
-
-
 ## Credits
+
+Many thanks to [@dbu](https://github.com/dbu) for helping me with my First Symfony Bundle (tm).
 
 - [Márk Sági-Kazár](https://github.com/sagikazarmark)
 - [All Contributors](https://github.com/indigophp/cookie-consent-bundle/contributors)
