@@ -28,7 +28,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Indigo\CookieConsentBundle\IndigoCookieConsentBundle(),
+        new Indigo\Bundle\CookieConsentBundle\IndigoCookieConsentBundle(),
     );
 }
 ```
