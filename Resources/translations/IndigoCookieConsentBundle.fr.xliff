@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="message">
                 <source>message</source>
-                <target>Ce site internet utilise des cookies pour vous proposer une experience enrichie.</target>                        
+                <target>Ce site internet utilise des cookies pour vous proposer une expérience enrichie.</target>                        
             </trans-unit>
             <trans-unit id="dismiss">
                 <source>dismiss</source>
@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="learn_more">
                 <source>learn_more</source>
-                <target>Plus d'info</target>
+                <target>Plus d'infos</target>
             </trans-unit>
         </body>
     </file>
