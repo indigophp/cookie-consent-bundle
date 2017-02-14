@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="message">
                 <source>message</source>
-                <target>Diese Webseite nutzt Cookies, um Ihnen alle Features zur Verfügung zu stellen.</target>
+                <target>Ce site internet utilise des cookies pour vous proposer une expérience enrichie.</target>                        
             </trans-unit>
             <trans-unit id="dismiss">
                 <source>dismiss</source>
-                <target>Verstanden!</target>
+                <target>J'ai compris !</target>
             </trans-unit>
             <trans-unit id="learn_more">
                 <source>learn_more</source>
-                <target>Mehr Info</target>
+                <target>Plus d'infos</target>
             </trans-unit>
         </body>
     </file>
